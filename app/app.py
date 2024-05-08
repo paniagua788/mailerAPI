@@ -11,6 +11,7 @@ def enviar_correo():
   destinatario = request.form['destinatario']
   asunto = request.form['asunto']
   mensaje = request.form['mensaje']
+  passwd = request.form['password']
 
 
   # Crea un nuevo mensaje de correo electrónico
@@ -24,7 +25,7 @@ def enviar_correo():
   # Conéctate al servidor SMTP de Gmail
   with smtplib.SMTP('smtp.gmail.com', 587) as server:
     server.starttls()
-    server.login(remitente, 'trkv nmtl oglx aoxw ')
+    server.login(remitente, passwd)
     server.sendmail(remitente, destinatario, msg.as_string())
     
     
